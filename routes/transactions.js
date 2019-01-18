@@ -22,6 +22,13 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+router.get('/users/:id', function (req, res, next) {
+    res.locals.connection.query(`SELECT * from käyttäjä WHERE ID = ${req.params.id}`, function (err, results, fields) {
+        if (err) throw err;
+        res.send({ 'status': 200, 'error': null, 'response': results });
+    });
+});
+
 router.post('/', (req, res, next) => {
     res.locals.connection.query('INSERT INTO tapahtuma (Rahanarvo, SP_ID) VALUES (?, ?)',
         [req.body.rahanarvo, req.body.SP_ID],
