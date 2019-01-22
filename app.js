@@ -5,7 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+//var indexRouter = require('./routes/index');
 var transactionsRouter = require('./routes/transactions');
 let usersrouter = require('./routes/users');
 let mysql = require('mysql');
@@ -38,7 +38,7 @@ app.use((req, res, next) => {
     res.locals.connection.connect();
     next();
 });
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/transactions', transactionsRouter);
 app.use('/users', usersrouter);
 
