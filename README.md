@@ -39,6 +39,18 @@ Esimerkki vastauksesta
             }]
 }
 ```
+```json
+{
+    "status": 400, 
+    "error": "invalid id", 
+}
+```
+```json
+{
+    "status": 400, 
+    "error": "Bad request",
+}
+```
 
 ### Lisää tapahtuma
 ```
