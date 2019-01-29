@@ -33,8 +33,6 @@ router.get('/:id', function (req, res, next) {
     }
 });
 
-
-
 router.post('/', (req, res, next) => {
     res.locals.connection.query('INSERT INTO tapahtuma (Rahanarvo, SP_ID) VALUES (?, ?)',
         [req.body.rahanarvo, req.body.SP_ID],
@@ -42,7 +40,7 @@ router.post('/', (req, res, next) => {
             if (err) {
                 res.send({ 'status': 400, 'error': "Bad request", 'response': results });
             }
-            res.json({message:'success'});
+            res.json({'message':'success', 'status': 200});
         });
 });
 

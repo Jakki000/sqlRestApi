@@ -24,7 +24,7 @@ router.post('/', function (req, res, next) {
         if (err) {
             res.send({ 'status': 400, 'error': "Bad request", 'response': results });
         }
-        res.send({ 'status': 200, 'error': null, 'response': results });
+        res.json({'message':'success', 'status': 200});
     });
 });
 

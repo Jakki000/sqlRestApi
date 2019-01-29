@@ -26,15 +26,93 @@ Hae tietyn possun tapahtumat
 ```
 GET /transactions/piggybank/{SP_ID}
 ```
+Esimerkki vastauksesta
+```json
+{
+    "status": 200, 
+    "error": null, 
+    "response":[{
+            "ID":1,
+            "Timestamp":"2018-09-20T10:32:53.000Z",
+            "SP_ID":1,
+            "Rahanarvo":3
+            }]
+}
+```
+
 ### Lisää tapahtuma
 ```
 POST /transactions
 ```
 Esimerkki pyynnöstä
-```
+```json
 {
     "rahanarvo": 3.45,
-    "aika": "2019-01-18T07:44:13.000Z",
     "SP_ID": 1
+}
+```
+Esimerkki vastauksesta
+```json
+{
+    "message": "success",
+    "status": 200
+}
+```
+```json
+{
+    "status": 400, 
+    "error": "Bad request",
+}
+```
+
+### Hae käyttäjät
+```
+GET /users
+```
+```
+GET /users/{käyttäjäId}
+```
+
+### Lisää käyttäjä
+```
+POST /users
+```
+Esimerkki pyynnöstä
+```json
+{
+    "kayttajanimi": "aaaa",
+    "salasana": "bbbbbb",
+    "etunimi": "Matti",
+    "sukunimi": "Meikäläinen"
+}
+```
+Esimerkki vastauksesta
+
+GET
+```json
+{
+    "status": 200, 
+    "error": null, 
+    "response":[{
+            "ID":1,
+            "Käyttäjänimi":"Aaaa",
+            "Salasana":"aaaaaa",
+            "Etunimi":"aaaa",
+            "Sukunimi":"aaa"
+            }]
+}
+```
+POST
+```json
+{
+    "message": "success",
+    "status": 200
+}
+```
+GET/POST
+```json
+{
+    "status": 400, 
+    "error": "Bad request",
 }
 ```
