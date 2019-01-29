@@ -20,12 +20,17 @@ router.get('/piggybank/:pID', (req, res) => {
     });
 })
 router.get('/:id', function (req, res, next) {
-    res.locals.connection.query(`SELECT * from tapahtuma WHERE ID = ${req.params.id}`, function (err, results, fields) {
-        if (err) {
-            res.send({ 'status': 400, 'error': "Bad request", 'response': results });
-        }
-        res.send({ 'status': 200, 'error': null, 'response': results });
-    });
+    if(Number.isInteger(parseInt(req.params.id))) {
+        res.locals.connection.query(`SELECT * from tapahtuma WHERE ID = ${req.params.id}`, function (err, results, fields) {
+            if (err) {
+                res.send({ 'status': 400, 'error': "Bad request", 'response': results });
+            }
+            res.send({ 'status': 200, 'error': null, 'response': results });
+        });
+    }
+    else {
+        res.send({ 'status': 400, 'error': "invalid id"});
+    }
 });
 
 
